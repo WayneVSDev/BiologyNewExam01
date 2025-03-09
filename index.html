@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Learning App - Grade 11</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #0066cc;
+            font-size: 1.2em;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .short-answer {
+            width: 100%;
+            height: 120px;
+            margin-top: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .check-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .check-btn:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Biology Learning App – Grade 11</h1>
+    <p style="text-align: center; color: #555;">Explore Biology concepts step-by-step! Answer each question and click "Check" to learn more.</p>
+
+    <div id="questions">
+        <!-- Multiple-Choice Questions -->
+        <div class="question" id="q1">
+            <h3>1. What is the primary function of the cell membrane?</h3>
+            <div class="options">
+                <input type="radio" name="q1" value="a"> a) To synthesize proteins<br>
+                <input type="radio" name="q1" value="b"> b) To act as a selective barrier controlling the movement of substances<br>
+                <input type="radio" name="q1" value="c"> c) To store genetic information<br>
+                <input type="radio" name="q1" value="d"> d) To produce energy<br>
+            </div>
+            <button class="check-btn" data-question="q1">Check</button>
+            <div class="result" id="result-q1"></div>
+        </div>
+
+        <div class="question" id="q2">
+            <h3>2. Which of the following particles is most likely to pass through a lipid bilayer by simple diffusion?</h3>
+            <div class="options">
+                <input type="radio" name="q2" value="a"> a) A large, polar glucose molecule<br>
+                <input type="radio" name="q2" value="b"> b) A small, non-polar oxygen molecule<br>
+                <input type="radio" name="q2" value="c"> c) A charged sodium ion<br>
+                <input type="radio" name="q2" value="d"> d) A large protein<br>
+            </div>
+            <button class="check-btn" data-question="q2">Check</button>
+            <div class="result" id="result-q2"></div>
+        </div>
+
+        <div class="question" id="q3">
+            <h3>3. What is the main difference between integral and peripheral membrane proteins?</h3>
+            <div class="options">
+                <input type="radio" name="q3" value="a"> a) Integral proteins are hydrophilic, while peripheral proteins are hydrophobic<br>
+                <input type="radio" name="q3" value="b"> b) Integral proteins are embedded within the lipid bilayer, while peripheral proteins are attached to its surface<br>
+                <input type="radio" name="q3" value="c"> c) Integral proteins are temporary, while peripheral proteins are permanent<br>
+                <input type="radio" name="q3" value="d"> d) Integral proteins function in transport, while peripheral proteins function in cell division<br>
+            </div>
+            <button class="check-btn" data-question="q3">Check</button>
+            <div class="result" id="result-q3"></div>
+        </div>
+
+        <div class="question" id="q4">
+            <h3>4. What is the role of aquaporins in the cell membrane?</h3>
+            <div class="options">
+                <input type="radio" name="q4" value="a"> a) To transport ions against their concentration gradient<br>
+                <input type="radio" name="q4" value="b"> b) To facilitate the diffusion of water molecules across the membrane<br>
+                <input type="radio" name="q4" value="c"> c) To act as enzymes for lipid synthesis<br>
+                <input type="radio" name="q4" value="d"> d) To anchor the cytoskeleton to the membrane<br>
+            </div>
+            <button class="check-btn" data-question="q4">Check</button>
+            <div class="result" id="result-q4"></div>
+        </div>
+
+        <div class="question" id="q5">
+            <h3>5. Which of the following best describes facilitated diffusion?</h3>
+            <div class="options">
+                <input type="radio" name="q5" value="a"> a) The movement of molecules against their concentration gradient using energy<br>
+                <input type="radio" name="q5" value="b"> b) The passive movement of molecules through the lipid bilayer without assistance<br>
+                <input type="radio" name="q5" value="c"> c) The passive movement of molecules through channel or carrier proteins<br>
+                <input type="radio" name="q5" value="d"> d) The movement of water molecules across a selectively permeable membrane<br>
+            </div>
+            <button class="check-btn" data-question="q5">Check</button>
+            <div class="result" id="result-q5"></div>
+        </div>
+
+        <div class="question" id="q6">
+            <h3>6. What is a key feature of pump proteins used in active transport?</h3>
+            <div class="options">
+                <input type="radio" name="q6" value="a"> a) They do not require energy<br>
+                <input type="radio" name="q6" value="b"> b) They undergo conformational changes to move molecules against their gradient<br>
+                <input type="radio" name="q6" value="c"> c) They allow molecules to move down their concentration gradient<br>
+                <input type="radio" name="q6" value="d"> d) They are non-specific and transport any type of molecule<br>
+            </div>
+            <button class="check-btn" data-question="q6">Check</button>
+            <div class="result" id="result-q6"></div>
+        </div>
+
+        <div class="question" id="q7">
+            <h3>7. Which of the following is an example of a particle with low membrane permeability?</h3>
+            <div class="options">
+                <input type="radio" name="q7" value="a"> a) Oxygen<br>
+                <input type="radio" name="q7" value="b"> b) Carbon dioxide<br>
+                <input type="radio" name="q7" value="c"> c) Sodium ions<br>
+                <input type="radio" name="q7" value="d"> d) Ethanol<br>
+            </div>
+            <button class="check-btn" data-question="q7">Check</button>
+            <div class="result" id="result-q7"></div>
+        </div>
+
+        <div class="question" id="q8">
+            <h3>8. What type of gate is commonly found on channel proteins?</h3>
+            <div class="options">
+                <input type="radio" name="q8" value="a"> a) Temperature-gated<br>
+                <input type="radio" name="q8" value="b"> b) Voltage-gated<br>
+                <input type="radio" name="q8" value="c"> c) Size-gated<br>
+                <input type="radio" name="q8" value="d"> d) Color-gated<br>
+            </div>
+            <button class="check-btn" data-question="q8">Check</button>
+            <div class="result" id="result-q8"></div>
+        </div>
+
+        <div class="question" id="q9">
+            <h3>9. What happens to a cell placed in a hypotonic solution?</h3>
+            <div class="options">
+                <input type="radio" name="q9" value="a"> a) Water moves out, causing the cell to shrink<br>
+                <input type="radio" name="q9" value="b"> b) Water moves in, causing the cell to swell<br>
+                <input type="radio" name="q9" value="c"> c) No net movement of water occurs<br>
+                <input type="radio" name="q9" value="d"> d) The cell membrane becomes impermeable to water<br>
+            </div>
+            <button class="check-btn" data-question="q9">Check</button>
+            <div class="result" id="result-q9"></div>
+        </div>
+
+        <div class="question" id="q10">
+            <h3>10. Which of the following is an advantage of lipid bilayers forming barriers within cells?</h3>
+            <div class="options">
+                <input type="radio" name="q10" value="a"> a) They increase the rate of protein synthesis<br>
+                <input type="radio" name="q10" value="b"> b) They compartmentalize cellular processes, enhancing efficiency<br>
+                <input type="radio" name="q10" value="c"> c) They prevent the synthesis of ATP<br>
+                <input type="radio" name="q10" value="d"> d) They allow all molecules to pass freely<br>
+            </div>
+            <button class="check-btn" data-question="q10">Check</button>
+            <div class="result" id="result-q10"></div>
+        </div>
+
+        <!-- Short-Answer Questions -->
+        <div class="question" id="q11">
+            <h3>11. a) List three locations of lipid bilayers in cells. b) Explain why the hydrophobic core of a lipid bilayer forms a barrier to hydrophilic particles. (6 marks)</h3>
+            <textarea class="short-answer" name="q11"></textarea>
+            <button class="check-btn" data-question="q11">Check</button>
+            <div class="result" id="result-q11"></div>
+        </div>
+
+        <div class="question" id="q12">
+            <h3>12. a) Describe the process of simple diffusion across a lipid bilayer. b) Outline how the polarity of a molecule affects its rate of diffusion across a lipid membrane. (6 marks)</h3>
+            <textarea class="short-answer" name="q12"></textarea>
+            <button class="check-btn" data-question="q12">Check</button>
+            <div class="result" id="result-q12"></div>
+        </div>
+
+        <div class="question" id="q13">
+            <h3>13. a) Define osmosis and predict the direction of water movement in a cell placed in a hypertonic solution. b) Outline the structure and function of aquaporin proteins in the cell membrane. (8 marks)</h3>
+            <textarea class="short-answer" name="q13"></textarea>
+            <button class="check-btn" data-question="q13">Check</button>
+            <div class="result" id="result-q13"></div>
+        </div>
+
+        <div class="question" id="q14">
+            <h3>14. a) Compare the location and anchoring of integral and peripheral proteins in the cell membrane. b) Outline three functions of membrane-bound proteins, providing an example for each. (10 marks)</h3>
+            <textarea class="short-answer" name="q14"></textarea>
+            <button class="check-btn" data-question="q14">Check</button>
+            <div class="result" id="result-q14"></div>
+        </div>
+
+        <div class="question" id="q15">
+            <h3>15. a) Describe the structure and function of pump proteins, including the role of specificity, conformational change, and ATP. b) Explain one example of active transport of molecules into or out of cells through a protein pump. (10 marks)</h3>
+            <textarea class="short-answer" name="q15"></textarea>
+            <button class="check-btn" data-question="q15">Check</button>
+            <div class="result" id="result-q15"></div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'b',
+            q5: 'c',
+            q6: 'b',
+            q7: 'c',
+            q8: 'b',
+            q9: 'b',
+            q10: 'b',
+            q11: `a) Locations: Cell membrane, nuclear envelope, endoplasmic reticulum. b) Explanation: The hydrophobic core, formed by fatty acid tails, repels hydrophilic particles because they are polar or charged and cannot easily interact with the non-polar, hydrophobic environment.`,
+            q12: `a) Description: Simple diffusion is the passive movement of molecules across a lipid bilayer from high to low concentration, without energy or proteins, until equilibrium. b) Effect: Non-polar molecules diffuse rapidly due to compatibility with the hydrophobic core, while polar molecules diffuse slowly or not at all without assistance.`,
+            q13: `a) Definition: Osmosis is the passive movement of water across a selectively permeable membrane from high water concentration (low solute) to low water concentration (high solute). Prediction: In a hypertonic solution, water moves out of the cell, causing it to shrink. b) Structure: Aquaporins are integral proteins forming channels with a hydrophilic pore. Function: They facilitate rapid water diffusion, increasing osmosis rate.`,
+            q14: `a) Comparison: Integral proteins are embedded within the lipid bilayer, often spanning both sides, anchored by hydrophobic interactions with the bilayer core. Peripheral proteins are attached to the inner or outer surface, anchored by hydrophilic interactions with lipid heads or integral proteins. b) Functions: 1) Transport - Channel proteins (e.g., aquaporins) move water or ions. 2) Signaling - Receptor proteins (e.g., insulin receptors) bind signaling molecules. 3) Anchoring - Attachment proteins (e.g., integrins) link to the cytoskeleton.`,
+            q15: `a) Description: Pump proteins are integral membrane proteins with specific binding sites for molecules and a structure that changes shape during transport. They use ATP to move molecules against their concentration gradient; specificity ensures only certain molecules are transported, and ATP drives conformational changes. b) Example: The sodium-potassium pump (Na+/K+ ATPase) pumps three sodium ions out of the cell and two potassium ions into the cell against their gradients, using ATP, crucial for maintaining membrane potential in nerve cells.`
+        };
+
+        const explanations = {
+            q1: `The cell membrane is like a gatekeeper for the cell—it decides what gets in and out! It’s a selective barrier, meaning it lets some things pass (like oxygen) but blocks others (like big proteins) to keep the cell safe and balanced. Think of it as a bouncer at a club, checking IDs!`,
+            q2: `Imagine the lipid bilayer as an oily wall. Small, non-polar molecules like oxygen can slip through easily because they “blend in” with the oily core. Polar or charged molecules, like glucose or sodium ions, get stuck because they don’t mix with oil—think of trying to push water through grease!`,
+            q3: `Integral proteins are like anchors buried deep in the lipid bilayer, often crossing it completely, while peripheral proteins are like helpers sitting on the surface. Picture integral proteins as nails hammered into a wall and peripheral ones as sticky notes on top! This affects how they work in the cell.`,
+            q4: `Aquaporins are water highways in the cell membrane! They’re special channels that let water zoom through quickly, helping the cell manage water levels. Without them, water would move too slowly, like trying to sip through a tiny straw instead of a big one.`,
+            q5: `Facilitated diffusion is like a VIP escort service—it’s passive (no energy needed) and uses proteins to help specific molecules cross the membrane. Imagine a crowded party: some guests (molecules) need a guide (protein) to get through the door (membrane) easily!`,
+            q6: `Pump proteins are the musclemen of the cell! They use ATP (energy) to push molecules against their will—like pumping water uphill. They change shape (conformational change) to do this, making them perfect for jobs like keeping sodium out and potassium in.`,
+            q7: `Sodium ions are like uninvited guests at an oily party—they can’t crash through the lipid bilayer because it’s hydrophobic (water-hating) and they’re charged (water-loving). Oxygen and CO2, being non-polar, slip in easily, but sodium needs a protein escort!`,
+            q8: `Channel proteins often have gates that open or close like doors. Voltage-gated ones respond to electric signals—like in nerves, where a change in voltage swings the door open for ions to rush through. It’s like a light switch for molecule movement!`,
+            q9: `In a hypotonic solution, there’s less solute outside the cell, so water rushes in to balance things out—like a sponge soaking up water! The cell swells, and in extreme cases, it could even burst if it’s an animal cell without a wall.`,
+            q10: `Lipid bilayers are like room dividers in a cell—they create separate spaces (compartments) for different jobs, like making energy in mitochondria or storing waste in lysosomes. This organization makes the cell super efficient, like a well-run factory!`,
+            q11: `a) Lipid bilayers are everywhere—like the cell membrane (the cell’s skin), nuclear envelope (protecting DNA), and endoplasmic reticulum (a protein factory). b) The hydrophobic core is like an oily fortress—water-loving (hydrophilic) particles can’t get through because they don’t mix with oil, keeping them out unless they have a special pass!`,
+            q12: `a) Simple diffusion is like a crowd spreading out naturally—molecules move from packed areas to empty ones without help, just sliding through the lipid bilayer if they can. b) Polarity is key: non-polar molecules (like oxygen) are VIPs that breeze through the oily core, while polar ones (like glucose) get stuck without a protein bouncer!`,
+            q13: `a) Osmosis is water’s dance across the membrane, flowing from where there’s more water (less solute) to less water (more solute). In a hypertonic solution, water flees the cell to the salty outside, shrinking it like a raisin! b) Aquaporins are like tiny water slides—integral proteins with pores that let water zip through fast, especially in places like your kidneys where water balance is critical.`,
+            q14: `a) Integral proteins are buried in the lipid bilayer like roots in soil, held by oily (hydrophobic) parts, while peripheral proteins sit on top like leaves, stuck by watery (hydrophilic) bonds. b) Proteins are multitaskers: 1) Transport (aquaporins for water), 2) Signaling (insulin receptors for messages), 3) Anchoring (integrins linking to the cell’s skeleton)—they’re the cell’s Swiss Army knife!`,
+            q15: `a) Pump proteins are like tiny engines in the membrane—specific slots grab certain molecules, ATP fuels a shape-shift (conformational change), and they push molecules uphill against their gradient. b) The sodium-potassium pump is a star: it shoves 3 sodium ions out and hauls 2 potassium ions in, using ATP to keep nerve cells ready to fire signals—like a battery charger for your brain!`
+        };
+
+        // Define multiple-choice question IDs
+        const multipleChoiceQuestions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
+
+        // Add event listeners to all check buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkButtons = document.querySelectorAll('.check-btn');
+            console.log(`Found ${checkButtons.length} check buttons`);
+            checkButtons.forEach((button, index) => {
+                const questionId = button.getAttribute('data-question');
+                console.log(`Button ${index + 1}: questionId = ${questionId}`);
+                button.addEventListener('click', () => {
+                    console.log(`Clicked check button for ${questionId}`);
+                    checkAnswer(questionId);
+                });
+            });
+        });
+
+        function checkAnswer(questionId) {
+            console.log(`Checking answer for ${questionId}`);
+            const resultDiv = document.getElementById(`result-${questionId}`);
+            const correctAnswer = answers[questionId];
+            let userAnswer, isCorrect;
+
+            if (multipleChoiceQuestions.includes(questionId)) {
+                // Multiple-choice question
+                userAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+                console.log(`User answer for ${questionId}: ${userAnswer ? userAnswer.value : 'null'}`);
+                if (userAnswer === null) {
+                    isCorrect = false; // No answer selected
+                } else {
+                    isCorrect = userAnswer.value === correctAnswer;
+                }
+            } else {
+                // Short-answer question
+                userAnswer = document.querySelector(`textarea[name="${questionId}"]`).value.trim().toLowerCase();
+                console.log(`User answer for ${questionId}: ${userAnswer}`);
+                const keywords = correctAnswer.toLowerCase().split(' ').filter(word => word.length > 3);
+                let matchedKeywords = 0;
+                keywords.forEach(keyword => {
+                    if (userAnswer.includes(keyword)) matchedKeywords++;
+                });
+                isCorrect = matchedKeywords / keywords.length >= 0.8;
+            }
+
+            resultDiv.style.display = 'block';
+            if (isCorrect) {
+                resultDiv.className = 'result correct';
+                resultDiv.innerHTML = `<p>Great job! Your answer is correct.</p>`;
+            } else {
+                resultDiv.className = 'result incorrect';
+                resultDiv.innerHTML = `<p>Oops! That’s not quite right.</p><p><strong>Correct Answer:</strong> ${correctAnswer}</p>`;
+            }
+            resultDiv.innerHTML += `<div class="explanation"><strong>Learn More:</strong> ${explanations[questionId]}</div>`;
+        }
+    </script>
+</body>
+</html>
